@@ -2365,7 +2365,8 @@ function DashboardView({ setView }: { setView: (view: ViewType) => void }) {
 
           <div
             className="bg-white w-fit max-w-[447px] h-[497px] xl2:h-[561px] items-stretch p-[25px] rounded-[30px] flex flex-col gap-[25px] cursor-pointer transition-all hover:shadow-lg hover:scale-[1.01]"
-            onClick={() => navigateTo('brain')}
+onClick={() => setView('brain')}
+
           >
             <div>
               <div className="flex items-center justify-between">
@@ -3131,6 +3132,13 @@ function DashboardView({ setView }: { setView: (view: ViewType) => void }) {
 }
 
 // Stub views
+function DocumentEditorView() {
+  return (
+    <div className="p-6">
+      <h2 className="text-2xl font-bold">Document Editor</h2>
+    </div>
+  )
+}
 function N8NView() {
   return (
     <div className="p-6">
@@ -3837,7 +3845,9 @@ if (showSignup) {
               {/* Home */}
               <nav className="space-y-1">
                 <Tooltip delayDuration={sidebarCollapsed ? 0 : 1000}>
-                  <TooltipTrigger asChild>
+                  <TooltipTrigger asChild> onClick={(e) => { e.stopPropagation(); setView('brain') }}
+
+
                     <button
                       onClick={() => navigateTo(homeItem.id as ViewType)}
                       className={`w-full flex items-center gap-2 px-4 py-2.5 rounded-[12px] text-black text-[13px] transition-all relative overflow-hidden ${currentView === homeItem.id ? 'text-black' : 'text-black hover:bg-gray-100'} ${sidebarCollapsed ? 'justify-center' : ''}`}
