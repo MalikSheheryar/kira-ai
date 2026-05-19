@@ -16,6 +16,7 @@
   "build": {
     "appId": "com.kira.kiraai",
     "productName": "Kira AI",
+    "publish": null,
     "directories": {
       "output": "release"
     },
@@ -33,7 +34,8 @@
           ]
         }
       ],
-      "icon": "public/icon.ico"
+      "icon": "public/icon.ico",
+      "publish": null
     },
     "mac": {
       "target": [
@@ -46,7 +48,8 @@
         }
       ],
       "icon": "public/icon.icns",
-      "category": "public.app-category.productivity"
+      "category": "public.app-category.productivity",
+      "publish": null
     },
     "nsis": {
       "oneClick": false,
