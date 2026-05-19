@@ -3844,8 +3844,8 @@ if (showSignup) {
             <div className="max-w-[237px] mx-auto">
               {/* Home */}
               <nav className="space-y-1">
-                <Tooltip delayDuration={sidebarCollapsed ? 0 : 1000}>
-                  <TooltipTrigger asChild> onClick={(e) => { e.stopPropagation(); setView('brain') }}
+                <Tooltip delayDuration={sidebarCollapsed ? 0 : 1000}>onClick={(e) => { e.stopPropagation(); setView('brain') }}
+                  <TooltipTrigger asChild> 
 
 
                     <button
