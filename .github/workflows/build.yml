@@ -1,0 +1,63 @@
+name: Build Kira AI
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # allows manual trigger from GitHub UI
+
+jobs:
+  # ─── Windows Build ───────────────────────────────────────────────────────
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Windows EXE
+        run: npm run electron:build:win
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: false
+
+      - name: Upload Windows Installer
+        uses: actions/upload-artifact@v3
+        with:
+          name: Kira-AI-Windows
+          path: release/*.exe
+          retention-days: 30
+
+  # ─── Mac Build ───────────────────────────────────────────────────────────
+  build-mac:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Mac DMG
+        run: npm run electron:build:mac
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: false
+
+      - name: Upload Mac DMG
+        uses: actions/upload-artifact@v3
+        with:
+          name: Kira-AI-Mac
+          path: release/*.dmg
+          retention-days: 30
