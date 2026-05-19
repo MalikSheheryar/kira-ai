@@ -2384,8 +2384,7 @@ onClick={() => setView('brain')}
                 </div>
                 <button
                   onClick={(e) => {
-                    e.stopPropagation()
-                    navigateTo('brain')
+                        setView('brain')
                   }}
                   className="transition-transform hover:translate-x-0.5 hover:-translate-y-0.5"
                 >
@@ -3844,7 +3843,7 @@ if (showSignup) {
             <div className="max-w-[237px] mx-auto">
               {/* Home */}
               <nav className="space-y-1">
-                <Tooltip delayDuration={sidebarCollapsed ? 0 : 1000}>onClick={(e) => { e.stopPropagation(); setView('brain') }}
+                <Tooltip delayDuration={sidebarCollapsed ? 0 : 1000}>
                   <TooltipTrigger asChild> 
 
 
